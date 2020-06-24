@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo EventName $GITHUB_EVENT_NAME
-      - run: echo Ref $GITHUB_REF
+      - run: echo $GITHUB_REF | sed -e 's/refs\/tags\///'
