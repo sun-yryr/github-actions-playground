@@ -2,8 +2,7 @@ name: on-release-tag
 
 on:
   release:
-    branches:
-      - master
+    types: [ released ]
 
 jobs:
   test:
