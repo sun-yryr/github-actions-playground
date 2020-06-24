@@ -2,7 +2,7 @@ name: on-release-tag
 
 on:
   release:
-    types: [ published ]
+    types: [ released ]
 
 jobs:
   test:
