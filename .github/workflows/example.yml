@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: SetUp symfony
-        uses: .github/actions/symfony-setup
+        uses: ./.github/actions/symfony-setup
       - name: PHPUnit
         run: echo "phpunit"
