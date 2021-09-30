@@ -1,0 +1,16 @@
+name: example
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: SetUp symfony
+        uses: .github/actions/symfony-setup
+      - name: PHPUnit
+        run: echo "phpunit"
