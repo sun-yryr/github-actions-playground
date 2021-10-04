@@ -1,0 +1,17 @@
+name: timeout test
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  timeout-check:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: sleep
+        run: sleep 10m
+        timeout-minutes: 1
+      -
+        if: failure()
+        run: echo "OK"
