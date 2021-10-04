@@ -14,6 +14,9 @@ pipeline_name=$1
 execution_id=$(aws codepipeline start-pipeline-execution --name "${pipeline_name}" \
             | jq -r '.pipelineExecutionId')
 
+# 環境変数に登録（GitHub Actions）
+echo "codepipeline_execution_id=${execution_id}" >> $GITHUB_ENV
+
 echo "
 次に進むためには下記のpipelineを承認してください。
 pipeline name: ${pipeline_name}
