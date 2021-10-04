@@ -33,7 +33,7 @@ while [ -z "$status" ] || [ "$status" = "InProgress" ]; do
 
     now=$(date "+%Y-%m-%dT%H:%M:%S")
 
-    echo "[${now}] 現在の状態： ${status}"
+    echo "[${now}] 現在の状態: ${status} execution_id: ${execution_id}"
 done
 
 if [ "$status" = "Succeeded" ]; then
