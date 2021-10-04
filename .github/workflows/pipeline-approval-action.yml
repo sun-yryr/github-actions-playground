@@ -26,4 +26,4 @@ jobs:
           export AWS_SESSION_TOKEN=${{ secrets.AWS_SESSION_TOKEN }}
           export AWS_DEFAULT_REGION=ap-northeast-1
           export AWS_EC2_METADATA_DISABLED=true
-          ./bin/cancel-codepipeline.sh github-approval-pipeline
+          ./bin/cancel-codepipeline.sh github-approval-pipeline ${{ env.codepipeline_execution_id }}
