@@ -1,13 +1,13 @@
 #!/bin/bash
 
-if [ ! $# -eq 12 ]; then
+if [ ! $# -eq 1 ]; then
     echo '呼び出し失敗'
     exit 1
 fi
 
 # 引数取得
 pipeline_name=$1
-execution_id=$2
+execution_id=$codepipeline_execution_id
 
 status=$(aws codepipeline get-pipeline-execution --pipeline-name "${pipeline_name}" --pipeline-execution-id "${execution_id}" \
             | jq -r '.pipelineExecution.status')
