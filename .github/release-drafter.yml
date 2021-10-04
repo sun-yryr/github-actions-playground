@@ -16,16 +16,6 @@ categories:
 change-title-escapes: '\<*_&'
 exclude-labels:
   - 'exclude from changelog'
-autolabeler:
-  - label: 'enhancement'
-    branch:
-      - '/feature\/.+/'
-  - label: 'fix'
-    branch:
-      - '/fix\/.+/'
-  - label: 'chore'
-    files:
-      - '*.md'
 template: |
   ## Changes
 
