@@ -12,8 +12,4 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: SetUp symfony
-        uses: ./.github/actions/symfony-setup
-      - name: PHPUnit
-        run: echo "phpunit"
+      - run: echo ${{ github.event_name }}/${{ env.image_uri }}
