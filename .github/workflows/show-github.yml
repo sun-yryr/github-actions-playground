@@ -1,0 +1,14 @@
+name: show-github
+on:
+  push:
+    branches:
+      - master
+  pull_request
+  release:
+    types:
+      - published
+jobs:
+  show:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo '${{ toJSON(github) }}'
