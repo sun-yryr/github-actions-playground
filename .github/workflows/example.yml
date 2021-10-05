@@ -5,6 +5,9 @@ on:
     branches:
       - "master"
 
+env:
+  image_uri: ${{ secrets.AWS_ECR_REPO_NAME }}:dev-${{ github.sha }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
