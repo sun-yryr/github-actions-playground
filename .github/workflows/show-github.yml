@@ -8,7 +8,7 @@ on:
       - master
   release:
     types:
-      - published
+      - released
 jobs:
   show:
     runs-on: ubuntu-latest
