@@ -1,24 +1,21 @@
-name-template: 'v$NEXT_PATCH_VERSION'
-tag-template: 'v$NEXT_PATCH_VERSION'
+name-template: 'B_v$NEXT_PATCH_VERSION'
+tag-template: 'B_v$NEXT_PATCH_VERSION'
 categories:
   - title: '🚀 Features'
     labels:
-      - 'feature'
-      - 'enhancement'
+      - 'feature-B'
   - title: '🐛 Bug Fixes'
     labels:
-      - 'fix'
-      - 'bugfix'
-      - 'bug'
+      - 'fix-B'
   - title: '🧰 Maintenance'
     labels:
       - 'chore'
 change-title-escapes: '\<*_&'
 exclude-labels:
   - 'exclude-ReleaseNote'
+  - 'feature-A'
+  - 'fix-A'
 template: |
   # Changes
 
   $CHANGES
-
-  ## Other changes

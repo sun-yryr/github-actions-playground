@@ -1,0 +1,21 @@
+name-template: 'A_v$NEXT_PATCH_VERSION'
+tag-template: 'A_v$NEXT_PATCH_VERSION'
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'feature-A'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'fix-A'
+  - title: '🧰 Maintenance'
+    labels:
+      - 'chore'
+change-title-escapes: '\<*_&'
+exclude-labels:
+  - 'exclude-ReleaseNote'
+  - 'feature-B'
+  - 'fix-B'
+template: |
+  # Changes
+
+  $CHANGES
