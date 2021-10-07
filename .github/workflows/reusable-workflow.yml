@@ -1,6 +1,6 @@
 name: reusable-test
 on:
-  workflow_call
+  workflow_call:
     inputs:
       workspace:
           description: '利用するワークスペース'
