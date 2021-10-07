@@ -1,0 +1,12 @@
+name: sample
+description: sample
+inputs:
+  text:
+    description: text
+    required: true
+runs:
+  using: composite
+  steps:
+    - 
+      shell: bash
+      run: echo ${{ inputs.text }}

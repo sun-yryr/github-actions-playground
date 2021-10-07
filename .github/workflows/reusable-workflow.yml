@@ -1,0 +1,16 @@
+name: reusable-test
+on:
+  workflow_call
+    inputs:
+      workspace:
+          description: '利用するワークスペース'
+          required: true
+          type: string
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: ./.github/actions/sample
+        with:
+          text: ${{ inputs.workspace }}

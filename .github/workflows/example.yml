@@ -4,12 +4,8 @@ on:
   push:
     branches:
       - "master"
-
-env:
-  image_uri: ${{ secrets.AWS_ECR_REPO_NAME }}:dev-${{ github.sha }}
-
 jobs:
   test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo ${{ github.event_name }}/${{ env.image_uri }}
+    uses: sun-yryr/github-actions-playground/.github/workflows/reusable-workflow.yml@master
+    with:
+      workspace: "example"
