@@ -1,5 +1,5 @@
-name-template: 'B_v$NEXT_PATCH_VERSION'
-tag-template: 'B_v$NEXT_PATCH_VERSION'
+name-template: 'B_vDraft'
+tag-template: 'B_vDraft'
 categories:
   - title: '🚀 Features'
     labels:

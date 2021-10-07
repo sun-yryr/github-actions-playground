@@ -1,5 +1,5 @@
-name-template: 'A_v$NEXT_PATCH_VERSION'
-tag-template: 'A_v$NEXT_PATCH_VERSION'
+name-template: 'A_vDraft'
+tag-template: 'A_vDraft'
 categories:
   - title: '🚀 Features'
     labels:
