@@ -12,6 +12,11 @@ jobs:
       -
         uses: actions/checkout@v2
       -
+        name: Set git congig
+        run: |
+          git config --global user.email "Actions@example.com"
+          git config --global user.name "GitHub Actions"
+      -
         name: run
         run: |
           git switch -c actions/new-schema
