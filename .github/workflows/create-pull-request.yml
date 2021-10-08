@@ -15,9 +15,10 @@ jobs:
         name: run
         run: |
           git switch -c actions/new-schema
-          echo ${{ inputs.name }} >> ./README.md
+          echo "${{ inputs.name }}" >> ./README.md
           git add ./README.md
+          git commit -m "Auto"
           git push origin actions/new-schema
-          hub pull-request -b master -m "$(date \"+%Y-%m-%d\") new schema from actions"
+          hub pull-request -b master -m "$(date +%Y-%m-%d) new schema from actions"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
