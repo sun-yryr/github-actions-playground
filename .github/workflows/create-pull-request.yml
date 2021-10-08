@@ -1,0 +1,23 @@
+name: Create pull-request
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: a
+        required: true
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: actions/checkout@v2
+      -
+        name: run
+        run: |
+          git switch -c actions/new-schema
+          echo ${{ inputs.name }} >> ./README.md
+          git add ./README.md
+          git push origin actions/new-schema
+          hub pull-request -b master -m "$(date \"+%Y-%m-%d\") new schema from actions"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
