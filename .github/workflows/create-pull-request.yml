@@ -23,6 +23,7 @@ jobs:
           echo "${{ inputs.name }}" >> ./README.md
           git add ./README.md
           git commit -m "Auto"
+          git pull origin
           git push origin actions/new-schema
           hub pull-request -b master -m "$(date +%Y-%m-%d) new schema from actions"
         env:
