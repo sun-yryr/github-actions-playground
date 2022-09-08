@@ -1,0 +1,18 @@
+name: matrix
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        env: ["develop", "staging"]
+    environment: ${{ matrix.env }}
+    steps:
+      -
+        run: echo "run"
+        shell: bash
