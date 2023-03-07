@@ -4,8 +4,10 @@ on:
   push:
     branches:
       - "master"
+  workflow_dispatch:
 jobs:
   test:
-    uses: sun-yryr/github-actions-playground/.github/workflows/reusable-workflow.yml@master
-    with:
-      workspace: "example"
+    runs-on: ubuntu-latest
+    steps:
+      -
+        run: echo $GITHUB_WORKFLOW
