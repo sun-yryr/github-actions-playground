@@ -16,5 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        run: echo \
+        run: echo
           ${{ github.event.inputs.notify_type }}
