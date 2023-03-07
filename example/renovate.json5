@@ -1,0 +1,21 @@
+{
+  extends: [
+    ":semanticCommits",
+    ":semanticCommitTypeAll(chore)",
+    ":prHourlyLimit2",
+    ":ignoreModulesAndTests",
+  ],
+  labels: ["deps"],
+  pin: false,
+  rangeStrategy: "bump",
+  node: false,
+  separateMajorMinor: false,
+  prConcurrentLimit: 32,
+  packageRules: [
+    { matchDepTypes: ["peerDependencies"], enabled: false },
+  ],
+  ignoreDeps: [
+    // manually bumping
+    "@types/node",
+  ],
+}
