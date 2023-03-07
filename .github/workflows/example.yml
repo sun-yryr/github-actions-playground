@@ -5,9 +5,16 @@ on:
     branches:
       - "master"
   workflow_dispatch:
+    inputs:
+      notify_type:
+        description: a
+        required: true
+        type: choice
+        options: [notice, start]
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       -
-        run: echo $GITHUB_WORKFLOW
+        run: echo \
+          ${{ github.event.inputs.notify_type }}
