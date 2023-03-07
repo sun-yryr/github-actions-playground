@@ -1,4 +1,4 @@
-name: example
+name: example with space
 
 on:
   push:
