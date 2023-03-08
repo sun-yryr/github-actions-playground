@@ -23,7 +23,7 @@ jobs:
           HOGE: $(ls)
       -
         id: created_at
-        run: echo "::set-output value=$(TZ=UTC-9 date '+%Y/%m/%d %H:%M:%S')"
+        run: echo "value=$(TZ=UTC-9 date '+%Y/%m/%d %H:%M:%S')" >> $GITHUB_OUTPUT
       -
         run: echo $CREATED_AT
         env:
