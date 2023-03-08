@@ -21,3 +21,10 @@ jobs:
           $HOGE
         env:
           HOGE: $(ls)
+      -
+        id: created_at
+        run: echo "::set-output value=$(TZ=UTC-9 date '+%Y/%m/%d %H:%M:%S')"
+      -
+        run: echo $CREATED_AT
+        env:
+          CREATED_AT: ${{ steps.created_at.outputs.value }}
