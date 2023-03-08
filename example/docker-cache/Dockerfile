@@ -28,6 +28,7 @@ RUN --mount=type=cache,id=apt-cache,target=/var/cache/apt,sharing=locked \
 FROM base AS server
 
 RUN touch sample.txt
+RUN touch sample2.txt
 
 ARG NODE_ENV="production"
 ARG IMAGE_TAG=""
