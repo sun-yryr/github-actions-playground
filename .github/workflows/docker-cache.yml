@@ -28,8 +28,8 @@ jobs:
         name: Build(a)
         uses: docker/build-push-action@v4
         with:
-          context: ./docker
-          file: Dockerfile
+          context: docker/
+          file: docker/Dockerfile
           target: builder
           tags: sample-builder:latest
           cache-from: type=local,src=/tmp/.buildx-cache
@@ -66,8 +66,8 @@ jobs:
         name: Build(a)
         uses: docker/build-push-action@v4
         with:
-          context: ./docker
-          file: Dockerfile
+          context: docker/
+          file: docker/Dockerfile
           target: server
           tags: sample-server:latest
           cache-from: type=local,src=/tmp/.buildx-cache
