@@ -1,30 +1,20 @@
-name: example with space
+name: example
 
-on:
-  push:
-    branches:
-      - "master"
-  workflow_dispatch:
-    inputs:
-      notify_type:
-        description: a
-        required: true
-        type: choice
-        options: [notice, start]
+on: [push]
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       -
-        run: echo
-          ${{ github.event.inputs.notify_type }}
-          $HOGE
-        env:
-          HOGE: $(ls)
-      -
-        id: created_at
-        run: echo "value=$(TZ=UTC-9 date '+%Y/%m/%d %H:%M:%S')" >> $GITHUB_OUTPUT
-      -
-        run: echo $CREATED_AT
-        env:
-          CREATED_AT: ${{ steps.created_at.outputs.value }}
+        name: Validate Branch Name
+        run: |
+          if [[ $GITHUB_REF =~ ^refs/heads/v.* ]]; then
+            echo "Invalid branch name. A branch name must not start with 'v'."
+            exit 1
+          if [[ $GITHUB_REF =~ ^refs/heads/staging_.* ]]; then
+            echo "Invalid branch name. A branch name must not start with 'staging_'."
+            exit 1
+          if [[ ${#GITHUB_REF} -gt 63 ]]; then
+            echo "Invalid branch name. The name must be less than 64 characters."
+            exit 1
