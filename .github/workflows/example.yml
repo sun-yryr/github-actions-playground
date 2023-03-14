@@ -12,9 +12,10 @@ jobs:
           if [[ $GITHUB_REF =~ ^refs/heads/v.* ]]; then
             echo "Invalid branch name. A branch name must not start with 'v'."
             exit 1
-          if [[ $GITHUB_REF =~ ^refs/heads/staging_.* ]]; then
+          elif [[ $GITHUB_REF =~ ^refs/heads/staging_.* ]]; then
             echo "Invalid branch name. A branch name must not start with 'staging_'."
             exit 1
-          if [[ ${#GITHUB_REF} -gt 63 ]]; then
+          elif [[ ${#GITHUB_REF} -gt 63 ]]; then
             echo "Invalid branch name. The name must be less than 64 characters."
             exit 1
+          fi
