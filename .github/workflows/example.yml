@@ -6,4 +6,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo $GITHUB_RUN_NUMBER
+      - run: echo A
+        if: env.IMAGE_TAG == 'staging' || startsWith(env.IMAGE_TAG, 'daily')
+        env:
+          IMAGE_TAG: staging
+      - run: echo B
+        if: env.IMAGE_TAG == 'staging' || startsWith(env.IMAGE_TAG, 'daily')
+        env:
+          IMAGE_TAG: daily-sample
+      - run: echo C
+        if: env.IMAGE_TAG == 'staging' || startsWith(env.IMAGE_TAG, 'daily')
+        env:
+          IMAGE_TAG: fail
