@@ -1,18 +1,13 @@
-name: reusable-test
+name: reusable
 on:
   workflow_call:
-    inputs:
-      workspace:
-          description: '利用するワークスペース'
-          required: true
-          type: string
+
 jobs:
-  test:
+  A:
     runs-on: ubuntu-latest
     steps:
-      -
-        uses: actions/checkout@v2
-      -
-        uses: ./.github/actions/sample
-        with:
-          text: ${{ inputs.workspace }}
+      - run: echo A
+  B:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo B

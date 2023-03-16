@@ -1,0 +1,14 @@
+name: Use reusable workflow
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo prepare
+  reuse:
+    needs: [prepare]
+    uses: .github/workflows/reusable-workflow.yml@master
