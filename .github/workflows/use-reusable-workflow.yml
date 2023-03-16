@@ -11,4 +11,4 @@ jobs:
       - run: echo prepare
   reuse:
     needs: [prepare]
-    uses: .github/workflows/reusable-workflow.yml@master
+    uses: ./.github/workflows/reusable-workflow.yml@master
