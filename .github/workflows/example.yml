@@ -6,8 +6,5 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          $(ls b)
-          exitCode=$?
-          echo $exitCode
-      - run: echo A
+      - run: echo ${{ github.ref_name }}
+      - run: echo ${{ github.ref }}
