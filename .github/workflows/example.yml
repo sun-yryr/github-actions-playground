@@ -7,7 +7,7 @@ jobs:
     env:
       RELEASE_REPOSITORY_URI: aaaa
       SNAPSHOT_REPOSITORY_URI: bbbb
-      target: RELEASE
+      target: release
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.ref_name }}
