@@ -4,7 +4,13 @@ on: [push]
 
 jobs:
   test:
+    env:
+      RELEASE_REPOSITORY_URI: aaaa
+      SNAPSHOT_REPOSITORY_URI: bbbb
+      target: RELEASE
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.ref_name }}
       - run: echo ${{ github.ref }}
+      - run: echo $(eval echo "REPOSITORY_URI=\${${target^^}_REPOSITORY_URI}")
+      - run: echo "$(eval echo REPOSITORY_URI=\${${target^^}_REPOSITORY_URI})"
