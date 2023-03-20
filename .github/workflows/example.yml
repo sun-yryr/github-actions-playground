@@ -12,5 +12,6 @@ jobs:
     steps:
       - run: echo ${{ github.ref_name }}
       - run: echo ${{ github.ref }}
-      - run: echo $(eval echo "REPOSITORY_URI=\${${target^^}_REPOSITORY_URI}")
-      - run: echo "$(eval echo REPOSITORY_URI=\${${target^^}_REPOSITORY_URI})"
+      - run: echo $(eval echo "REPOSITORY_URI1=\${${target^^}_REPOSITORY_URI}") >> $GITHUB_ENV
+      - run: echo "$(eval echo REPOSITORY_URI2=\${${target^^}_REPOSITORY_URI})" >> $GITHUB_ENV
+      - run: env
