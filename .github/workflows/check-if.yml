@@ -15,9 +15,5 @@ jobs:
     runs-on: ubuntu-latest
     if: success() || failure()
     steps:
-      - run: echo "success"
-        if: success()
-      - run: echo "failure"
-        if: failure()
-      - run: echo "always"
-        if: success() || failure()
+      - uses: technote-space/workflow-conclusion-action@v3
+      - run: echo ${{ env.WORKFLOW_CONCLUSION }}
