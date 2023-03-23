@@ -1,0 +1,22 @@
+name: if
+on: [push]
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo A
+  B:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1
+  C:
+    needs: [A, B]
+    runs-on: ubuntu-latest
+    if: success() || failure()
+    steps:
+      - run: echo "success"
+        if: success()
+      - run: echo "failure"
+        if: failure()
+      - run: echo "always"
+        if: success() || failure()
