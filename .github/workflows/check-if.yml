@@ -13,7 +13,7 @@ jobs:
   C:
     needs: [A, B]
     runs-on: ubuntu-latest
-    if: success() || failure()
+    if: always()
     steps:
       - uses: technote-space/workflow-conclusion-action@v3
       - run: echo ${{ env.WORKFLOW_CONCLUSION }}
