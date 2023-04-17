@@ -25,19 +25,18 @@ jobs:
     steps:
       - run: echo a
   a:
-    needs: [skip]
+    needs: [skip, status]
+    if: ${{ ! failure() && needs.status.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo a
   b:
     needs: [a]
-    if: ${{ ! failure() && needs.a.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo b
   c:
     needs: [a]
-    if: ${{ ! failure() && needs.a.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo c
