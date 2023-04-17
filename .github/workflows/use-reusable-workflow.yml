@@ -12,3 +12,9 @@ jobs:
   reuse:
     needs: [prepare]
     uses: ./.github/workflows/reusable-workflow.yml
+  status:
+    needs: [reuse]
+    runs-on: ubuntu-latest
+    steps:
+      -
+        run: echo ${{ needs.reuse.result }}

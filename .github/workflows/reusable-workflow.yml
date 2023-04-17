@@ -11,3 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo B
+  C:
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'stg'
+    steps:
+      - run: echo C
