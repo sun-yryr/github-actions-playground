@@ -31,6 +31,13 @@ jobs:
       - run: echo a
   b:
     needs: [a]
+    if: ${{ ! failure() && needs.a.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo b
+  c:
+    needs: [a]
+    if: ${{ ! failure() && needs.a.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo c
