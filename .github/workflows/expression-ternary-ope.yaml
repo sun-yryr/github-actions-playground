@@ -1,0 +1,17 @@
+name: expression ternary operator
+on:
+  workflow_dispatch:
+    inputs:
+      input1:
+        type: string
+        required: true
+
+env:
+  sample: ${{ inputs.input1 == 'allow' && 'OK' || 'NG' }}
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        run: echo ${{ env.sample }}
