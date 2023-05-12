@@ -8,8 +8,11 @@ on:
 
 env:
   sample: |
-    ${{ inputs.input1 == 'allow'
-      && 'OK' || 'NG' }}
+    ${{
+      inputs.input1 == 'allow' &&
+        'OK' ||
+        'NG'
+    }}
   sample2: sample
 
 jobs:
