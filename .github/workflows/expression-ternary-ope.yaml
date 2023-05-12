@@ -36,10 +36,10 @@ jobs:
         shell: sh
     steps:
       -
-        run: echo '|${{ env.sample1 }}|'
+        run: echo '<${{ env.sample1 }}>'
       -
-        run: echo '|${{ env.sample2 }}|'
+        run: echo '<${{ env.sample2 }}>'
       -
-        run: echo '|${{ env.sample3 }}|'
+        run: echo '<${{ env.sample3 }}>'
       -
-        run: echo '|${{ env.sample4 }}|'
+        run: echo '<${{ env.sample4 }}>'
