@@ -12,6 +12,7 @@ env:
       && 'OK'
       || 'NG'
     }}
+  sample2: sample
 
 jobs:
   sample:
