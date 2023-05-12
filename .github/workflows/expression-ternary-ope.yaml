@@ -7,17 +7,31 @@ on:
         required: true
 
 env:
-  sample: |
+  sample1: |
     ${{
       inputs.input1 == 'allow' &&
         'OK' ||
         'NG'
     }}
-  sample2: sample
+  sample2:
+    ${{
+      inputs.input1 == 'allow' &&
+        'OK' ||
+        'NG'
+    }}
+  sample3: ${{ inputs.input1 == 'allow' && 'OK' || 'NG' }}
+  sample4: |
+    ${{ inputs.input1 == 'allow' && 'OK' || 'NG' }}
 
 jobs:
-  sample:
+  echo:
     runs-on: ubuntu-latest
     steps:
       -
-        run: echo ${{ env.sample }}
+        run: echo '${{ env.sample1 }}'
+      -
+        run: echo '${{ env.sample2 }}'
+      -
+        run: echo '${{ env.sample3 }}'
+      -
+        run: echo '${{ env.sample4 }}'
