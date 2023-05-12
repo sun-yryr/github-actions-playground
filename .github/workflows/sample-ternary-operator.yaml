@@ -12,9 +12,23 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ inputs.allow-aws && secrets.AWS_SECRET_ACCESS_KEY || '' }}
 
 jobs:
-  sample:
+  sample1:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+      -
+        name: Get identity
+        run: aws sts get-caller-identity
+  sample2:
     runs-on: ubuntu-latest
     steps:
       -
         name: Get identity
         run: aws sts get-caller-identity
+        env:
+          aws-region: ap-northeast-1
