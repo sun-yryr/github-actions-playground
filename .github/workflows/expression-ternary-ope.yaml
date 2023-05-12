@@ -7,11 +7,9 @@ on:
         required: true
 
 env:
-  sample:
+  sample: |
     ${{ inputs.input1 == 'allow'
-      && 'OK'
-      || 'NG'
-    }}
+      && 'OK' || 'NG' }}
   sample2: sample
 
 jobs:
