@@ -1,0 +1,20 @@
+name: sample2
+on:
+  workflow_dispatch:
+    inputs:
+      allow-aws:
+        type: boolean
+        required: true
+        description: allow aws command
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ inputs.allow-aws && secrets.AWS_ACCESS_KEY_ID || '' }}
+  AWS_SECRET_ACCESS_KEY: ${{ inputs.allow-aws && secrets.AWS_SECRET_ACCESS_KEY || '' }}
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Get identity
+        run: aws sts get-caller-identity
