@@ -31,4 +31,4 @@ jobs:
         name: Get identity
         run: aws sts get-caller-identity
         env:
-          aws-region: ap-northeast-1
+          AWS_REGION: ap-northeast-1
