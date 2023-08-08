@@ -8,10 +8,11 @@ jobs:
       - uses: actions/cache/restore@v3
         id: cache
         with:
-          path: output.txt
+          path: base_output.txt
           key: main
       - if: steps.cache.outputs.cache-hit != 'true'
         run: exit 1
+      - run: echo base_output.txt
   save:
     runs-on: ubuntu-latest
     needs:
