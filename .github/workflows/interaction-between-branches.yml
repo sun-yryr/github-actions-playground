@@ -1,0 +1,23 @@
+name: interaction-between-branches
+on: push
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: main
+      - run: cat output.txt
+  save:
+    runs-on: ubuntu-latest
+    needs:
+      - restore
+    if: failure()
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo ${{ github.sha }} > output.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: main
+          path: output.txt
