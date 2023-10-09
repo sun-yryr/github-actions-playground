@@ -10,10 +10,11 @@ jobs:
       target: release
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.ref_name }}
-      - run: echo ${{ github.ref }}
-      - run: echo $(eval echo "REPOSITORY_URI1=\${${target^^}_REPOSITORY_URI}") >> $GITHUB_ENV
-      - run: echo "$(eval echo REPOSITORY_URI2=\${${target^^}_REPOSITORY_URI})" >> $GITHUB_ENV
-      - run: echo "REPOSITORY_URI3=$(eval echo ${${target^^}_REPOSITORY_URI})" >> $GITHUB_ENV
-      - run: echo "REPOSITORY_URI4=$(eval echo \${${target^^}_REPOSITORY_URI})" >> $GITHUB_ENV
-      - run: env
+      -
+        name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: sun-yryr/discordbot-sample
+          tags: |
+            type=semver,pattern={{version}},value=0.1.0
