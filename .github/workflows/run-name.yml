@@ -1,0 +1,13 @@
+name: example run-name
+run-name: |-
+  改行
+  入れてみた
+
+on:
+  workflow_dispatch: ~
+
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 1
