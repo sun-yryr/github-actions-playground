@@ -2,6 +2,8 @@ name: example run-name
 run-name: |-
   改行
   入れてみた
+  インデント
+    入れてみた
 
 on:
   workflow_dispatch: ~
