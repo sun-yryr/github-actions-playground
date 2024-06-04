@@ -13,10 +13,13 @@ runs:
   steps:
     - name: a
       if: inputs.service == 'a'
+      shell: bash
       run: echo "TEXT='a run'" >> $GITHUB_ENV
     - name: b
       if: inputs.service == 'b'
+      shell: bash
       run: echo "TEXT='b run'" >> $GITHUB_ENV
     - name: c
       if: inputs.service == 'c'
+      shell: bash
       run: echo "TEXT='c run'" >> $GITHUB_ENV
