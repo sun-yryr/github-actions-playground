@@ -1,0 +1,19 @@
+name: sample
+
+on:
+  workflow_dispatch:
+    inputs:
+      service:
+        type: string
+        required: true
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/if
+        id: if
+        with:
+          service: ${{ inputs.service }}
+      - run: echo ${{ steps.if.outputs.text }}

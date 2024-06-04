@@ -1,0 +1,22 @@
+name: if
+inputs:
+  service:
+    type: string
+    required: true
+
+outputs:
+  text:
+    value: ${{ env.TEXT }}
+
+runs:
+  using: composite
+  steps:
+    - name: a
+      if: inputs.service == 'a'
+      run: echo "TEXT='a run'" >> $GITHUB_ENV
+    - name: b
+      if: inputs.service == 'b'
+      run: echo "TEXT='b run'" >> $GITHUB_ENV
+    - name: c
+      if: inputs.service == 'c'
+      run: echo "TEXT='c run'" >> $GITHUB_ENV
