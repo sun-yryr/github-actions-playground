@@ -23,6 +23,6 @@ runs:
       if: inputs.service == 'c'
       shell: bash
       run: echo "TEXT='c run'" >> $GITHUB_ENV
-    - if: ! failure()
+    - if: ${{ ! failure() }}
       id: p
       run: echo "TEXT=$TEXT" >> $GITHUB_OUTPUT
