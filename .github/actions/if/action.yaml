@@ -6,7 +6,7 @@ inputs:
 
 outputs:
   text:
-    value: ${{ env.TEXT }}
+    value: ${{ steps.p.outputs.TEXT }}
 
 runs:
   using: composite
@@ -23,3 +23,6 @@ runs:
       if: inputs.service == 'c'
       shell: bash
       run: echo "TEXT='c run'" >> $GITHUB_ENV
+    - if: ! failure()
+      id: p
+      run: echo "TEXT=$TEXT" >> $GITHUB_OUTPUT
