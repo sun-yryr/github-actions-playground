@@ -25,4 +25,5 @@ runs:
       run: echo "TEXT='c run'" >> $GITHUB_ENV
     - if: ${{ ! failure() }}
       id: p
+      shell: bash
       run: echo "TEXT=$TEXT" >> $GITHUB_OUTPUT
