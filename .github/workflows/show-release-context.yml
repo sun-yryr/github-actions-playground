@@ -7,6 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Show release context
-        run: echo '${{ toJSON(github.event.release) }}'
+        run: |
+          # github.event.release を JSON として整形表示（bash 側の解釈で壊れにくい書き方）
+          echo '${{ toJSON(github.event.release) }}' | jq .
+      - name: Show raw event payload (GITHUB_EVENT_PATH)
+        run: |
+          # イベント全体の生 JSON
+          jq . "$GITHUB_EVENT_PATH"
+          echo '--- .release only ---'
+          jq .release "$GITHUB_EVENT_PATH"
       - name: Show git commit hash
         run: echo '${{ github.sha }}'
