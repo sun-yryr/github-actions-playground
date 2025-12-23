@@ -1,0 +1,12 @@
+name: show-release-context
+on:
+  release:
+    types: [ prereleased, released ]
+jobs:
+  show:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show release context
+        run: echo '${{ toJSON(github.event.release) }}'
+      - name: Show git commit hash
+        run: echo '${{ github.sha }}'
