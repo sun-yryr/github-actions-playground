@@ -3,7 +3,7 @@ tag-template: "v$RESOLVED_VERSION"
 # stable は prerelease を含めず、「前回の stable release」からの差分にする
 include-pre-releases: false
 prerelease: false
-latest: true
+latest: "true"
 categories:
   - title: "🚀 Features"
     labels:
