@@ -1,5 +1,5 @@
-name-template: "v$RESOLVED_VERSION-rc.$RUN_NUMBER"
-tag-template: "v$RESOLVED_VERSION-rc.$RUN_NUMBER"
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
 # pre-releaseも含めた直前のリリースからの差分を出力する
 include-pre-releases: true
 prerelease: true
