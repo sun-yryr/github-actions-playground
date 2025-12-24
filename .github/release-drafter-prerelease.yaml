@@ -4,7 +4,7 @@ tag-template: "v$RESOLVED_VERSION-rc.$RUN_NUMBER"
 include-pre-releases: true
 prerelease: true
 # pre-releaseはlatestとして扱わない
-latest: false
+latest: "false"
 categories:
   - title: "🚀 Features"
     labels:
