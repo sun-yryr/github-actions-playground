@@ -1,0 +1,42 @@
+name-template: "v$RESOLVED_VERSION-rc.$RUN_NUMBER"
+tag-template: "v$RESOLVED_VERSION-rc.$RUN_NUMBER"
+# pre-releaseも含めた直前のリリースからの差分を出力する
+include-pre-releases: true
+prerelease: true
+# pre-releaseはlatestとして扱わない
+latest: false
+categories:
+  - title: "🚀 Features"
+    labels:
+      - "feature"
+      - "enhancement"
+  - title: "🐛 Fixes"
+    labels:
+      - "bug"
+      - "fix"
+  - title: "🧰 Maintenance"
+    labels:
+      - "chore"
+      - "refactor"
+      - "dependencies"
+  - title: "📝 Documentation"
+    labels:
+      - "docs"
+exclude-labels:
+  - "skip-changelog"
+  - "internal"
+change-template: "- $TITLE (#$NUMBER) @$AUTHOR"
+sort-by: "merged_at"
+sort-direction: "descending"
+template: |
+  ## Pre-release Notes
+
+  This is a pre-release build.
+  It includes changes since the last release **or** pre-release.
+
+  ## What's Changed
+
+  $CHANGES
+
+  ## Contributors
+  $CONTRIBUTORS
