@@ -21,6 +21,16 @@ env:
   MARKER_NAME: deduplication-success-${{ github.sha }}
 
 jobs:
+  test:
+    runs-on: ubuntu-slim
+    steps:
+      - run: |
+          gh api \
+              "/repos/${REPO}/actions/artifacts?NAME=${MARKER_NAME}"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+
   check-marker:
     runs-on: ubuntu-slim
     outputs:
