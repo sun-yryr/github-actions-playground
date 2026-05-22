@@ -26,7 +26,7 @@ jobs:
     steps:
       - run: |
           gh api \
-              "/repos/${REPO}/actions/artifacts?NAME=${MARKER_NAME}"
+              "/repos/${REPO}/actions/artifacts?name=${MARKER_NAME}"
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
