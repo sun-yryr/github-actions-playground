@@ -30,7 +30,7 @@ jobs:
         id: marker
         run: |
           found=$(gh api \
-            "/repos/${OWNER}/${REPO}/actions/artifacts?NAME=${ARTIFACT_NAME}" \
+            "/repos/${REPO}/actions/artifacts?NAME=${MARKER_NAME}" \
             --jq '.total_count')
           
           if [ "$found" -gt 0 ]; then
@@ -40,9 +40,7 @@ jobs:
           fi
         env:
           GH_TOKEN: ${{ github.token }}
-          OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.repository }}
-          ARTIFACT_NAME: ${{ env.MARKER_NAME }}
 
   process:
     needs: [check-marker]
