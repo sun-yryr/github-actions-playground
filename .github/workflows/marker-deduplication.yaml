@@ -1,0 +1,64 @@
+name: artifact marker based deduplication(reusable)
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_call:
+
+concurrency:
+  # PRの場合はブランチごとにグループ化して古いものをキャンセルする
+  # それ以外の場合はコミットハッシュでグループ化する
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
+  cancel-in-progress: true
+
+permissions:
+  actions: read
+  contents: read
+
+env:
+  MARKER_NAME: deduplication-success-${{ github.sha }}
+
+jobs:
+  check-marker:
+    runs-on: ubuntu-slim
+    outputs:
+      exists: ${{ steps.marker.outputs.exists }}
+    steps:
+      - name: Check exists marker
+        id: marker
+        run: |
+          found=$(gh api \
+            "/repos/${OWNER}/${REPO}/actions/artifacts?NAME=${ARTIFACT_NAME}" \
+            --jq '.total_count')
+          
+          if [ "$found" -gt 0 ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.repository }}
+          ARTIFACT_NAME: ${{ env.MARKER_NAME }}
+
+  process:
+    needs: [check-marker]
+    if: ${{ needs.check-marker.outputs.exists != 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: echo 'a'
+
+  save-success-marker:
+    needs: [process]
+    runs-on: ubuntu-slim
+    steps:
+      - name: Create marker
+        run: echo "${GITHUB_SHA}" > marker.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.MARKER_NAME }}
+          path: marker.txt

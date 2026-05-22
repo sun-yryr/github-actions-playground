@@ -1,0 +1,17 @@
+name: artifact marker based deduplication(caller)
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  unique-process:
+    uses: ./.github/workflows/marker-deduplication.yaml
+
+  process:
+    needs: [unique-process]
+    if: always() && needs.unique-process.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'a'
