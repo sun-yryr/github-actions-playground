@@ -40,7 +40,7 @@ jobs:
         id: marker
         run: |
           found=$(gh api \
-            "/repos/${REPO}/actions/artifacts?NAME=${MARKER_NAME}" \
+            "/repos/${REPO}/actions/artifacts?name=${MARKER_NAME}" \
             --jq '.total_count')
           
           if [ "$found" -gt 0 ]; then
